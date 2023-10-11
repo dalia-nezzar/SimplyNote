@@ -1,0 +1,198 @@
+/* Styles généraux */
+body {
+    font-family: Roboto, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Styles pour les titres */
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #13183d;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Styles pour le container */
+.container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%; /* Ajuster la largeur selon vos besoins */
+    max-width: 1200px; /* Largeur maximale */
+    text-align: center; /* Centrer le contenu du container */
+}
+
+/* Animation pour faire bouger les cartes */
+@keyframes cardMovement {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Styles pour les tâches à faire */
+.card.todo {
+    background-color: #ffcbcb; /* Couleur de fond pour les tâches à faire */
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100px; /* Hauteur fixe pour les cartes carrées */
+    display: inline-block; /* Afficher les cartes en ligne */
+    width: calc(25% - 20px); /* Largeur des cartes pour un affichage en 3 colonnes */
+    box-sizing: border-box;
+    animation: cardMovement 3s ease infinite;
+    animation-delay: 0.5s; /* Délai d'1 seconde pour les cartes paires */
+}
+
+/* Styles pour les tâches terminées */
+.card.done {
+    background-color: #c3f4a4; /* Couleur de fond pour les tâches terminées */
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100px; /* Hauteur fixe pour les cartes carrées */
+    display: inline-block; /* Afficher les cartes en ligne */
+    width: calc(25% - 20px); /* Largeur des cartes pour un affichage en 3 colonnes */
+    box-sizing: border-box;
+    animation: cardMovement 3s ease infinite;
+    animation-delay: 0s; /* Pas de délai pour les cartes impaires */
+}
+/* Card when hovered */
+.card:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour les boutons */
+.delete {
+    border: none;
+    /*long button centered*/
+    display: block;
+    margin: 0 auto;
+    margin-top: 5%;
+    background-color: #c8fbcb;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add {
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin-top: 1%;
+    min-height: 3rem;
+    padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+}
+
+.add:hover,
+.add:focus,
+.delete:hover,
+.delete:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.add:hover {
+    transform: translateY(-1px);
+}
+
+.add:active {
+    background-color: #f0f0f1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+}
+
+/* Styles pour les checkboxes */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Style pour les input de texte */
+input[type="text"] {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+    font-size: 25px;
+    width: 100%;
+    height: calc(width / 3);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-bottom: 1px solid #007bff;
+    label {
+        top: 0;
+        font: 20px Roboto, sans-serif;
+        color: #007bff;
+    }
+}
+
+/* Styles pour les labels des checkboxes */
+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+/* Style de la coche des checkboxes */
+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Style de la coche lorsque la checkbox est cochée */
+input[type="checkbox"]:checked + label::before {
+    background-color: #ffe600;
+    border-color: #ffe600;
+    transform: scale(0.8);
+}
+
+/* Animation au survol des checkboxes */
+label:hover::before {
+    background-color: #ddd;
+}
