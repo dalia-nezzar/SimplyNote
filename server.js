@@ -10,11 +10,10 @@ const db = kenx({
   client: "pg",
   connection: {
     host: "127.0.0.1",
-    user: "YOURUSER",
-    password: "YOURPASSWORD",
-    database: "YOURDATABASE"
+    user: "POSTGRES",
+    password: "POSTGRES",
+    database: "simply-note-postgres"
   },
-  debug: true,
 });
 
 
