@@ -1,6 +1,6 @@
 # SimplyNote 📝
 
-Welcome to SimplyNote, a simple and elegant Todo App powered by EJS, JavaScript, and Node!
+Welcome to SimplyNote, a simple Todo App powered by EJS, JavaScript, and Node!
 
 ## About SimplyNote
 
