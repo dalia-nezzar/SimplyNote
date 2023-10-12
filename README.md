@@ -12,6 +12,11 @@ SimplyNote is a simple, let's be honest, Todo application that helps you keep tr
 - 📂 Table creation using the schema defined in `data/sql.sql`.
 - ⚙️ Requires Node.js and npm for smooth operation.
 
+## How it looks like
+
+![image](https://github.com/dalia-nezzar/SimplyNote/assets/113182098/003746b6-640f-404d-96fc-ec6c575db95a)
+
+
 ## Future Updates
 
 I have a lot of plans for this lil' application! :
