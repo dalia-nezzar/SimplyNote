@@ -3,16 +3,17 @@ const bodyParser = require("body-parser");
 const kenx = require("knex");
 const app = express();
 const path = require("path");
+require("dotenv").config();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "views")));
 
 const db = kenx({
   client: "pg",
   connection: {
-    host: "127.0.0.1",
-    user: "POSTGRES",
-    password: "POSTGRES",
-    database: "simply-note-postgres"
+    host: process.env.POSTGRES_HOST,
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DATABASE
   },
 });
 
