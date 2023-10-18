@@ -23,12 +23,6 @@ const pool = new Pool({
   connectionString: "postgres://default:Cl9gt8ZmhreT@ep-little-cake-71382927-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require",
 })
 
-app.get("/", async (req, res) => {
-  const result= await pool.query('SELECT * FROM "todo"');
-  res.send(result.rows);
-});
-
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set("view engine", "ejs");
