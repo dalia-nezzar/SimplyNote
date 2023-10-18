@@ -17,6 +17,12 @@ app.use(express.static(path.join(__dirname, "views")));
   },
 });*/
 
+const { Pool } = require('pg')
+
+const pool = new Pool({
+  connectionString: "postgres://default:Cl9gt8ZmhreT@ep-little-cake-71382927-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require",
+})
+
 app.get("/", (req, res) => {
   res.send("Bonjour");
 });
