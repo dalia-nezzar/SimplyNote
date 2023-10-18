@@ -57,6 +57,7 @@ app.post("/deleteTask", async (req, res) => {
   const { id } = req.body;
   const result = await pool.query('DELETE FROM todo WHERE id = $1', [id]);
   const result2 = await pool.query('SELECT * FROM todo');
+  res.redirect("/");
   res.render("index", { todos: result2.rows });
 });
 
