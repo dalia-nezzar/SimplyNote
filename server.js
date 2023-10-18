@@ -25,7 +25,7 @@ const pool = new Pool({
 
 app.get("/", async (req, res) => {
   const result= await pool.query('SELECT * FROM "todo"');
-  res.send(result);
+  res.send(result.rows);
 });
 
 
