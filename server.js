@@ -7,7 +7,7 @@ require("dotenv").config();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "views")));
 
-const db = kenx({
+/*const db = kenx({
   client: "pg",
   connection: {
     host: process.env.POSTGRES_HOST,
@@ -15,6 +15,10 @@ const db = kenx({
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DATABASE
   },
+});*/
+
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
 
@@ -23,17 +27,17 @@ app.use(bodyParser.json());
 app.set("view engine", "ejs");
 
 // Route pour la page d'accueil
-app.get("/", (req, res) => {
+/*app.get("/", (req, res) => {
   db.select("*")
     .from("todo")
     .then(data => {
       res.render("index", { todos: data });
     })
     .catch(err => res.status(400).json(err));
-});
+});*/
 
 // Créer une nouvelle tâche
-app.post("/addTask", (req, res) => {
+/*app.post("/addTask", (req, res) => {
   const { textTodo } = req.body;
   db("todo")
     .insert({ task: textTodo })
@@ -78,7 +82,7 @@ app.post("/deleteTask", (req, res) => {
       res.json({ message: "Tâche supprimée" });
     })
     .catch(err => res.status(400).json(err));
-});
+});*/
 
 app.listen(8080, () => {
   console.log("Serveur démarré sur le port 8080");
