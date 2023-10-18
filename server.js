@@ -33,18 +33,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set("view engine", "ejs");
 
-// Route pour la page d'accueil
-/*app.get("/", (req, res) => {
+/* // Route pour la page d'accueil
+app.get("/", (req, res) => {
   db.select("*")
     .from("todo")
     .then(data => {
       res.render("index", { todos: data });
     })
     .catch(err => res.status(400).json(err));
-});*/
+});
 
 // Créer une nouvelle tâche
-/*app.post("/addTask", (req, res) => {
+app.post("/addTask", (req, res) => {
   const { textTodo } = req.body;
   db("todo")
     .insert({ task: textTodo })
@@ -90,6 +90,40 @@ app.post("/deleteTask", (req, res) => {
     })
     .catch(err => res.status(400).json(err));
 });*/
+
+// Route pour la page d'accueil
+app.get("/", async (req, res) => {
+  const result = await pool.query('SELECT * FROM "todo"');
+  res.render("index", { todos: result.rows });
+});
+
+// Ajouter une tâche
+app.post("/addTask", async (req, res) => {
+  const { textTodo } = req.body;
+  const result = await pool.query('INSERT INTO "todo" (task) VALUES ($1) RETURNING *', [textTodo]);
+  res.redirect("/");
+});
+
+// Mettre à jour l'état d'une tâche
+app.put("/moveTaskDone", async (req, res) => {
+  const { name, id } = req.body;
+  if (name === "todo") {
+    const result = await pool.query('UPDATE "todo" SET status = 1 WHERE id = $1 RETURNING status', [id]);
+    res.json(result.rows[0].status);
+  } else {
+    const result = await pool.query('UPDATE "todo" SET status = 0 WHERE id = $1 RETURNING status', [id]);
+    res.json(result.rows[0].status);
+  }
+});
+
+// Supprimer une tâche
+app.post("/deleteTask", async (req, res) => {
+  const { id } = req.body;
+  const result = await pool.query('DELETE FROM "todo" WHERE id = $1', [id]);
+  res.json({ message: "Tâche supprimée" });
+});
+
+
 
 app.listen(8080, () => {
   console.log("Serveur démarré sur le port 8080");
