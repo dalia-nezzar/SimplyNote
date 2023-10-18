@@ -26,6 +26,6 @@ function deleteTask(id) {
         body: JSON.stringify({ id })
     }).then(response => response.json()).then(message => {
         // console.log(message);
-        window.location.reload();
+        window.location.href="/";
     }).catch(err => console.log(err));
 }
