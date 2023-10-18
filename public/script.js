@@ -1,25 +1,31 @@
 function moveTask(event, id) {
-    const { name } = event.target;
-    fetch("http://localhost:8080/moveTaskDone", {
+    fetch("/moveTaskDone", {
         method: "PUT",
         headers: {
-        "Content-Type": "application/json"
+            "Content-Type": "application/json"
         },
-        body: JSON.stringify({ name, id })
+        body: JSON.stringify({ name: event.target.name, id })
     }).then(response => response.json()).then(status => {
         // console.log(status);
-        window.location.reload();
+        if (status === 1) {
+            event.target.name = "done";
+            event.target.checked = true;
+        } else {
+            event.target.name = "todo";
+            event.target.checked = false;
+        }
     }).catch(err => console.log(err));
 }
+
 function deleteTask(id) {
-    fetch("http://localhost:8080/deleteTask", {
+    fetch("/deleteTask", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ id })
     }).then(response => response.json()).then(message => {
-        console.log(message);
+        // console.log(message);
         window.location.reload();
     }).catch(err => console.log(err));
 }
