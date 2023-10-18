@@ -54,7 +54,7 @@ app.put("/moveTaskDone", async (req, res) => {
 });
 
 // Supprimer une tâche
-app.post("/deleteTask", async (req, res) => {
+app.post("/", async (req, res) => {
   const { id } = req.body;
   const result = await pool.query('DELETE FROM todo WHERE id = $1', [id]);
   res.json({message : "tâche supprimée"});
