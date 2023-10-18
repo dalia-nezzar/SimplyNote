@@ -50,6 +50,7 @@ app.put("/moveTaskDone", async (req, res) => {
   }
   const back = await pool.query('SELECT * FROM todo');
   res.render("index", { todos: back.rows })
+  res.redirect("/");
 });
 
 // Supprimer une tâche et rediriger sur la page d'accueil
