@@ -45,12 +45,11 @@ app.put("/moveTaskDone", async (req, res) => {
   const { name, id } = req.body;
   if (name === "todo") {
     const result = await pool.query('UPDATE todo SET status = 1 WHERE id = $1 RETURNING status', [id]);
-    res.json(result.rows[0].status);
-    res.redirect("/");
   } else {
     const result = await pool.query('UPDATE todo SET status = 0 WHERE id = $1 RETURNING status', [id]);
-    res.json(result.rows[0].status);
   }
+  const back = await pool.query('SELECT * FROM todo');
+  res.render("index", { todos: back.rows })
 });
 
 // Supprimer une tâche et rediriger sur la page d'accueil
