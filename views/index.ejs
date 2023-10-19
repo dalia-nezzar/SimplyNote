@@ -28,7 +28,9 @@
                         <% if (todos[i].status == 0) { %>
                             <div class="card todo">
                                 <label>
-                                    <input type="checkbox" name="todo" value="<%= todos[i].id %>" onclick="moveTask(event, '<%= todos[i].id %>')" />
+                                    <form action="/moveTask" method="PUT">
+                                        <input type="checkbox" name="todo" value="<%= todos[i].id %>"/>
+                                    </form>
                                     <span><%= todos[i].task %></span>
                                 </label>
                                 <form action="/deleteTask" method="POST">
@@ -47,7 +49,9 @@
                     <% if (todos[i].status == 1) { %>
                         <div class="card done">
                             <label>
-                                <input type="checkbox" name="done" value="<%= todos[i].id %>" onclick="moveTask(event, '<%= todos[i].id %>')" />
+                                <form action="/moveTask" method="PUT">
+                                    <input type="checkbox" name="done" value="<%= todos[i].id %>" checked/>
+                                </form>
                                 <span><%= todos[i].task %></span>
                             </label>
                             <form action="/deleteTask" method="POST">
