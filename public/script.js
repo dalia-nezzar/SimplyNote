@@ -6,7 +6,7 @@ function moveTask(event, id) {
         },
         body: JSON.stringify({ name: event.target.name, id })
     }).then(response => response.json()).then(status => {
-        // console.log(status);
+        console.log(status);
         if (status === 1) {
             event.target.name = "done";
             event.target.checked = true;
