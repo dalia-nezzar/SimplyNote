@@ -30,7 +30,6 @@
                                 <label>
                                     <input type="checkbox" name="todo" value="<%= todos[i].id %>" onclick="moveTask(event, '<%= todos[i].id %>')" />
                                     <span><%= todos[i].task %></span>
-                                    <span><%= todos[i].id %></span>
                                 </label>
                                 <form action="/deleteTask" method="POST">
                                     <input type="hidden" name="id" value="<%= todos[i].id %>"/>
