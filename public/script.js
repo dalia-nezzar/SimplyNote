@@ -13,7 +13,7 @@ function moveTask(event, id) {
             event.target.name = "todo";
             event.target.checked = false;
         }
-        window.location.href="/";
+        window.location.reload();
     }).catch(err => console.log(err));
 }
 
