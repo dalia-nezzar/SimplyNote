@@ -45,8 +45,10 @@ app.put("/moveTaskDone", async (req, res) => {
   const { name, id } = req.body;
   if (name === "todo") {
     const result = await pool.query('UPDATE todo SET status = 1 WHERE id = $1 RETURNING status', [id]);
+    res.redirect("/")
   } else {
     const result = await pool.query('UPDATE todo SET status = 0 WHERE id = $1 RETURNING status', [id]);
+    res.redirect("/")
   }
   const back = await pool.query('SELECT * FROM todo');
   res.render("index", { todos: back.rows });
