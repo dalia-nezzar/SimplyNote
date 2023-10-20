@@ -45,17 +45,15 @@ app.put("/moveTaskDone", async (req, res) => {
   const { name, id } = req.body;
   if (name === "todo") {
     const result = pool.query('UPDATE todo SET status = 1 WHERE id = $1 RETURNING status', [id]);
-    const back = await pool.query('SELECT * FROM todo');
-    res.render("index", { todos: back.rows });
   } else {
     const result = pool.query('UPDATE todo SET status = 0 WHERE id = $1 RETURNING status', [id]);
-    const back = await pool.query('SELECT * FROM todo');
-    res.render("index", { todos: back.rows });
   }
+  const back = await pool.query('SELECT * FROM todo');
+  res.render("index", { todos: back.rows });
 });
 
 // Supprimer une tâche et rediriger sur la page d'accueil
-app.delete("/deleteTask", async (req, res) => {
+app.post("/deleteTask", async (req, res) => {
   const { id } = req.body;
   const result = await pool.query('DELETE FROM todo WHERE id = $1', [id]);
   const back = await pool.query('SELECT * FROM todo');

@@ -19,7 +19,7 @@ function moveTask(event, id) {
 
 function deleteTask(id) {
     fetch("/deleteTask", {
-        method: "DELETE",
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },

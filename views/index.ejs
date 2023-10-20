@@ -31,7 +31,7 @@
                                     <input type="checkbox" name="todo" value="<%= todos[i].id %>" onclick="moveTask(event, '<%= todos[i].id %>')" />
                                     <span><%= todos[i].task %></span>
                                 </label>
-                                <form action="/deleteTask" method="DELETE">
+                                <form action="/deleteTask" method="POST">
                                     <input type="hidden" name="id" value="<%= todos[i].id %>"/>
                                     <button type="submit" class="delete">Delete</button>
                                 </form>                                
@@ -50,7 +50,7 @@
                                 <input type="checkbox" name="done" value="<%= todos[i].id %>" onclick="moveTask(event, '<%= todos[i].id %>')" />
                                 <span><%= todos[i].task %></span>
                             </label>
-                            <form action="/deleteTask" method="DELETE">
+                            <form action="/deleteTask" method="POST">
                                 <input type="hidden" name="id" value="<%= todos[i].id %>"/>
                                 <button type="submit" onclick="deleteTask('<%= todos[i].id %>')" class="delete">Delete</button>
                             </form>
